@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Camp 2026</title>
+    <meta name="description" content="">
+
+    <style>
+        /* تعريف خط واشنطن بوست للعناوين (Postoni) */
+@font-face {
+    font-family: 'WP Postoni';
+    src: url('fonts/Postoni-Regular.woff2') format('woff2'),
+         url('fonts/Postoni-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* تعريف خط واشنطن بوست للنصوص (Franklin) */
+@font-face {
+    font-family: 'WP Franklin';
+    src: url('fonts/Franklin-Regular.woff2') format('woff2'),
+         url('fonts/Franklin-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'WP Franklin', Georgia, serif; /* للنصوص العامة */
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'WP Postoni', 'Times New Roman', serif; /* للعناوين */
+    font-weight: bold;
+}
+
+
+        :root {
+            --primary: #0d9594;
+            --accent: #ebad23;
+            --dark: #272727;
+            --purple: #47266a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'AbdoMaster-DemiBold', sans-serif;
+            background-color: white;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* ==================== زر الترجمة ==================== */
+        .translate-btn {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            z-index: 1000;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .translate-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ==================== باقي الـ CSS (كما هو) ==================== */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), 
+                        url('./1.png') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 120px 20px 90px;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 3vw, 4.5rem);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 10px 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--purple);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--purple);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+        }
+
+        .notice {
+            background: #fff3cd;
+            border-right: 6px solid #ffc107;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-right: 6px solid var(--primary);
+            padding: 28px;
+            border-radius: 10px;
+            height: 100%;
+        }
+
+        .info-box h3 {
+            color: var(--primary);
+            margin-bottom: 18px;
+            font-size: 1.35rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        footer {
+            background-image: url("01.jpg");
+            color: #ddd;
+            padding: 90px 0 40px;
+            margin-top: 50px;
+        }
+
+        footer h3 {
+            color: rgba(213,59,57);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        footer h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 50px 40px;
+            margin-bottom: 70px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #093a5e;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-right: 8px;
+        }
+
+        .social-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            color: #093a5e;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-left: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--accent);
+            color: #222;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        .logos-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .logos-container img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            padding: 8px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .translate-btn {
+                top: 10px;
+                left: 10px;
+                padding: 8px 14px;
+                font-size: 0.95rem;
+            }
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Hero -->
+<header class="hero">
+    <div class="container">
+        <h1>Summer Camp 2026</h1>
+        <!-- <p>سجل الآن في كامب الربيع والصيف<br>
+        تجارب علمية ممتعة وعملية للأطفال</p> -->
+        
+        <!-- <a href="https://www.cogran.io/index.html?explora" class="btn" target="_blank">التسجيل الآن</a>
+        <a href="mailto:campcoordinator@explora.us" class="btn btn-secondary">تواصل مع المنسق</a> -->
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- Important Notice
+    <div class="notice">
+        <strong>إذا كنت تشعر بأي أعراض مرضية (حمى، سيلان أنف، التهاب حلق...)</strong><br>
+        يرجى البقاء في المنزل وعدم حضور الكامب. شكرًا لتعاونكم في الحفاظ على سلامة الجميع.
+    </div>
+
+    Camp Info -->
+    <!-- <div class="section">
+        <h2>كامبات الصيف 2026</h2>
+        <p style="text-align:center; font-size:1.25rem; max-width:700px; margin:0 auto;">
+            من 1 يونيو إلى 31 يوليو 2026<br>
+            كامبات أسبوعية (نصف يوم) • عضو: 170 دولار | غير عضو: 195 دولار
+        </p>
+    </div> --> 
+
+    <div class="info-grid">
+        <div class="info-box">
+            <h3 style="text-align: center;">Women VIP<br>
+                Women Powerhouse London</h3>
+                <p>The Women’s Package of the Year – A Transformational Experience
+
+                In the heart of London, where culture, ambition, and global opportunity meet, a new kind of experience is created:
+                
+                Women creating a Women Powerhouse.
+                
+                This is more than a programme.
+                It is a complete, carefully designed journey to help every woman redefine the next step of her pfe—with clarity, strength, and vision.
+            </p>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3 style="text-align: center;">What Makes It Exceptional</h3>
+            <p>Every woman is seen, heard, and guided based on her unique path.
+
+                We take this seriously:
+                
+                * 1:1 Personal Consultation – tailored to her life, goals, and challenges
+                * Leadership & Empowerment Sessions – building confidence, decision-making, and presence
+                * Group Conversations – learning from real stories and shared experiences
+                * Strategic Direction – redefining her next step with clarity and purpose
+                
+                Whether she is:
+                
+                * Starting her journey
+                * Growing a project
+                * Or seeking a new direction
+                
+                She will leave with:
+                
+                A clear vision, practical steps, and renewed power
+                
+                ⸻
+                
+                The Power of Women Together
+                
+                At the core of this experience is connection.
+                
+                Women will:
+                
+                * Meet like-minded, ambitious women
+                * Share, learn, and support each other
+                * Build a lasting women-to-women community
+                
+                This is not just an event.
+                It is the beginning of a powerful network.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <h3 style="text-align: center;">The Experience</h3>
+            <p>Over 2 powerful days of training, followed by a curated London cultural journey, women step into a space built for real growth, connection, and transformation.
+                This is a full experience—personal, professional, and deeply human.
+            </p>
+        </div>
+
+        <div class="info-box">
+            <h3 style="text-align: center;">The London Journey</h3>
+            <p>Beyond the training, participants will explore the beauty and inspiration of London through a curated experience.
+
+                * Discover the city’s culture, energy, and diversity
+                * Reflect, connect, and expand perspective
+                * Experience London as a space for new beginnings
+                
+                This journey is not just about the city—
+                it is about discovering new dimensions of life within it.
+                
+            </p>
+        </div>
+        <div class="info-box">
+            <h3 style="text-align: center;">The Vision</h3>
+            <p>Women Powerhouse London is the experience where:
+
+                * Women redefine their next chapter
+                * Women build strength and clarity
+                * Women step forward with purpose
+                
+                This is the Women’s Package of the Year.
+                This is where transformation becomes real.
+                Dates:
+                18-25 August 
+                We might find another dates
+                27 August-2Sept 
+                Fees 2500GBP 20% to you
+            </p>
+        </div>
+
+    </div>
+
+    <!-- ===================== Gallery Section ===================== -->
+    <div class="section" style="background:#f9f9f9; border-radius: 15px;">
+        <h2> Liverpool camp</h2>
+        <div class="gallery">
+            <img src="./ASSETS/asset/1.png" alt="نشاط علمي في الكامب">
+            <img src="./ASSETS/asset/2.png" alt="أطفال يلعبون">
+            <img src="./ASSETS/asset/3.png" alt="تجربة كيميائية">
+            <img src="./ASSETS/asset/4.png" alt="وقت الراحة والمرح">
+            <img src="./ASSETS/asset/5.png" alt="نشاط جماعي">
+            <img src="./ASSETS/asset/6.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/7.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/8.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/9.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/10.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/11.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/12.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/13.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/14.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/15.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/16.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/17.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/18.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/19.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/20.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/21.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/22.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/23.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/24.png" alt="أطفال يبتسمون">
+            <img src="./ASSETS/asset/25.png" alt="أطفال يبتسمون">
+        </div>
+    </div>
+
+    <!-- ===================== Videos Section ===================== -->
+    <div class="section">
+        <h2>Camp videos</h2>
+        <div class="video-grid">
+            
+            <!-- فيديو يوتيوب 1 -->
+            <div class="video-container">
+                <iframe src="https://drive.google.com/file/d/1uftsw204WBAV3jXB3tpdpByTaIg7544K/view?usp=sharing" 
+                        title="يوم في كامب إكسبلورا" 
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+
+            <!-- فيديو يوتيوب 2 -->
+            <div class="video-container">
+                <iframe src="https://drive.google.com/file/d/1TbDT5-Wg3K9UWrvK_xGXDVDj0YwynTyV/view?usp=sharing" 
+                        title="تجارب علمية ممتعة" 
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;muted" 
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://drive.google.com/file/d/1bt7cGoZRB0j8mw6rv55KsCaPE50kBcY6/view?usp=sharing" 
+                        title="تجارب علمية ممتعة" 
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;muted" 
+                        allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://drive.google.com/file/d/1firjPaHnzdEM_8bhro6oL93jafbHEiwv/view?usp=sharing" 
+                        title="تجارب علمية ممتعة" 
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;muted" 
+                        allowfullscreen></iframe>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<!-- ===================== New Footer ===================== -->
+<footer>
+<div class="container">
+    <div class="footer-grid">
+        
+        <!-- العمود الأول: اللوغوهات فقط (مظبوطة جنب بعض) -->
+        <div>
+            <div class="logos-container">
+                <img src="Layer 0.png" alt="ISA Logo" height="85">
+                <img src="./CHL-LOGO.png" alt="CHL Logo" height="85">
+                <img src="./001.png" alt="Imperial Logo" height="85">
+                <img src="./ASSETS/FutureVerse-logo-black-colour@4x.png" alt="FutureVerse Logo" height="85">
+                <img src="./002.png" alt="ALEPH Logo" height="85">
+            </div>
+        </div>
+
+        <!-- العمود الثاني: تواصل معنا -->
+        <div>
+            <h3>Contact us </h3>
+            <ul class="footer-links">
+                <li><a href="tel:+963988954443">📞 (+963) 988-954-443</a></li>
+                <li><a href="tel:+971585224464">📞 (+971) 585 224 464</a></li>
+                <li><a href="mailto:isaacademy023@gmail.com">✉️ isaacademy023@gmail.com</a></li>
+                <li><a href="mailto:Futureverse71@gmail.com">✉️ Futureverse71@gmail.com</a></li>
+            </ul>
+        </div>
+
+        <!-- العمود الثالث: تابعنا + ساعات العمل -->
+        <div>
+            <h3>Follow us on social media</h3>
+            <div style="margin: 20px 0 30px;">
+                <a href="https://www.facebook.com/profile.php?id=61551052763557" target="_blank" class="social-btn">ISA Facebook</a>
+                <a href="https://www.instagram.com/i.s.a_academy/" target="_blank" class="social-btn">ISA Instagram</a>
+                <a href="https://www.facebook.com/share/1CFTuBvBg8/?mibextid=wwXIfr" target="_blank" class="social-btn">CHL Facebook</a>
+                <a href="https://www.instagram.com/montessori_academychl?igsh=enphYWtjY2lnbTUz" target="_blank" class="social-btn">CHL Instagram</a>
+                <a href="https://www.facebook.com/AlephLanguageServicesCenter" target="_blank" class="social-btn">Aleph Language Services Center</a>
+            </div>
+
+            <h3 style="margin-top: 25px;">ساعات العمل</h3>
+            <p style="color:#093a5e; line-height:1.7;">
+                السبت - الخميس: 10:00 ص - 7:00 م<br>
+                الجمعة : عطلة
+            </p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        <p>© 2026 ISA Academy & FutureVerse - All rights reserved</p>
+    </div>
+</div>
+</footer>
+
+
+</body>
+</html>
