@@ -98,6 +98,8 @@ h1, h2, h3 {
             align-items: center;
         }
 
+
+
         .hero h1 {
             font-size: clamp(2rem, 3vw, 4.5rem);
             margin-bottom: 25px;
@@ -323,17 +325,24 @@ h1, h2, h3 {
                 padding: 8px 14px;
                 font-size: 0.95rem;
             }
-             .hero {
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), 
-                        url('./1.png') center/cover no-repeat;
-            background-size: 100% 100%;
-            height: 250px;            
-        }
-        footer {
+
+            .hero {
+                background-size: contain;
+                padding: 80px 15px 60px;
+                min-height: 50vh;
+            }
+            .hero h1 {
+            font-size: clamp(1rem, 1vw, 1rem);
+            margin-bottom: 25px;
+            font-weight: 700;
+            }
+            
+
+            .footer {
             background-image: url("01.jpg");
             background-size: 100% 100%;
             height: 100%;            
-        }
+            }
             .section {
                 padding: 60px 0;
             }
@@ -344,7 +353,7 @@ h1, h2, h3 {
 <!-- Hero -->
 <header class="hero">
     <div class="container">
-        <h1>Summer Camp 2026</h1>
+        <h1>Summer Camp <br> 2026</h1>
         <!-- <p>سجل الآن في كامب الربيع والصيف<br>
         تجارب علمية ممتعة وعملية للأطفال</p> -->
         
@@ -352,6 +361,21 @@ h1, h2, h3 {
         <a href="mailto:campcoordinator@explora.us" class="btn btn-secondary">تواصل مع المنسق</a> -->
     </div>
 </header>
+
+    <div class="container">
+
+     <div class="info-grid">
+      <div class="image" style="display: flex; align-items: center; justify-content: center;">
+            <img src="photo_2026-05-08_16-34-33.jpg" alt="" style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        </div>
+        <div class="image" style="display: flex; align-items: center; justify-content: center;">
+            <img src="001.png" alt="" style="width: 100%;height: 100% ;max-height: 400px; max-width: 400px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        </div>
+       </div>
+      </div>
+    </div>
+
+
 
 <div class="container">
     <div class="info-grid">
@@ -363,6 +387,8 @@ h1, h2, h3 {
                  </p>
             
         </div>
+
+
 
         <div class="info-box">
             <h3 style="text-align: center;">STUDENTS (Ages 10–17)<br>
@@ -572,7 +598,7 @@ h1, h2, h3 {
                 <img src="Layer 0.png" alt="ISA Logo" height="85" loading="lazy">
                 <img src="./CHL-LOGO.png" alt="CHL Logo" height="85" loading="lazy">
                 <img src="./001.png" alt="Imperial Logo" height="85" loading="lazy">
-                <img src=".//ASSETS//FutureVerse-logo-black-colour@4x.png" alt="FutureVerse Logo" height="85" loading="lazy">
+                <img src="ASSETS/FutureVerse-logo-black-colour@4x.png" alt="FutureVerse Logo" height="85" loading="lazy">
                 <img src="./002.png" alt="ALEPH Logo" height="85" loading="lazy">
             </div>
         </div>
